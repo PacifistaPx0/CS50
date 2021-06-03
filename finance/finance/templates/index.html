@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <h2>
+            User's Portfolio
+        </h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Stocks Owned</th>
+                    <th>Shares Owned</th>
+                    <th>Current Price</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for stock in stocks %}
+                <tr>
+                    <td><p>{{ stock.symbol }}</p></td>
+                    <td><P>{{ stock.shares }}</P></td>
+                    <td><p>{{ stock.price | usd }}</p></td>
+                    <td><p>{{ stock.value | usd }}</p></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </class>
+    </div>
+    <div>
+        <p>Your current balance is {{ user_funds }}</p>
+        <p>Your grand total is {{ grand_total }} </p>
+    </div>
+{% endblock %}
